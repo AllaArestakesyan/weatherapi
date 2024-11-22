@@ -13,8 +13,16 @@
       </router-link>
     </div>
   </nav>
-  <div>
-    <h1>Home</h1>
+  <div class="home">
+    <div>
+      <p>{{ obj.name ? obj.name : "Yerevan" }}</p>
+      <p>{{ obj.temp ? Math.round(obj.temp) : "0" }}<sup>o</sup></p>
+      <p>{{ obj.country ? obj.country : "Armenia" }}</p>
+    </div>
+    <img src="/House 4 3.png" alt="">
+    <div class="scroll">
+
+    </div>
   </div>
 </template>
 
@@ -25,8 +33,11 @@ export default defineComponent({
   name: 'HomePage',
   data() {
     return {
+      locations: [],
       str: "/Default.png",
-      bool: true
+      bool: true,
+      text: '',
+      obj: {}
     }
   },
   methods: {
@@ -43,6 +54,52 @@ export default defineComponent({
     value() {
       console.log('Component is about to be unmounted');
     }
+  },
+  mounted() {
+    // localStorage.locations = JSON.stringify(['Erevan', 'New York', 'London', 'Tokyo', 'Sydney'])
+    if (typeof localStorage !== 'undefined') {
+      if (localStorage.locations === undefined) {
+        this.text = "..."
+      } else {
+        this.locations = JSON.parse(localStorage.locations)
+        // console.log(this.locations);
+      }
+    } else {
+      this.text = "..."
+    }
+
+    fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        // console.log('Your IP-based location:', data);
+        // console.log(`City: ${data.city}, Region: ${data.region}, Country: ${data.country_name}`);
+        const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
+        if (!x) {
+          // console.log(data.city);
+          this.locations.push(data.city);
+          localStorage.locations = JSON.stringify(this.locations)
+        }
+        // const apiKey = 'd2e7790ef6a84f91a5455407241311'
+        // const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${data.city}`;
+        // fetch(url)
+        //   .then(response => response.json())
+        //   .then(data => {
+        //     console.log('===>', data);
+        //     this.obj = {
+        //       name: data.location.name,
+        //       country: data.location.country,
+        //       temp: data.current.temp_c,
+        //       icon: 'https:' + data.current.condition.icon,
+        //       text: data.current.condition.text
+        //     }
+        //   })
+        //   .catch(error => {
+        //     console.error('Error fetching weather data:', error);
+        //   });
+      })
+      .catch(error => {
+        console.error('Error fetching location data:', error);
+      });
   }
 });
 </script>
@@ -62,12 +119,12 @@ export default defineComponent({
 .navHome {
   padding: 30px;
   background: linear-gradient(#2e335a, #1c1b33);
-  border-bottom: 1px solid #9fa6ab;
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 100;
 
-  @media (max-width:576px) {
+  @media (max-width:700px) {
     bottom: 0;
     padding: 12px;
     top: auto;
@@ -81,7 +138,7 @@ export default defineComponent({
     justify-content: center;
     gap: 20px 30px;
 
-    @media (max-width:576px) {
+    @media (max-width:700px) {
       display: none;
     }
 
@@ -102,7 +159,7 @@ export default defineComponent({
     display: none;
     align-items: center;
 
-    @media (max-width:576px) {
+    @media (max-width:700px) {
       display: flex;
     }
 
@@ -116,7 +173,7 @@ export default defineComponent({
       margin: auto;
       background: linear-gradient(#3f4783, #1c1b33);
       border-radius: 50% 50% 0 0;
-      width: 180px;
+      width: 160px;
       padding: 10px 20px;
       box-shadow: 0 0 20px 2px #3f47838d;
 
@@ -160,4 +217,66 @@ export default defineComponent({
     }
   }
 }
+
+.home {
+  background-image: url('http://localhost:8080/image.png');
+  min-height: 92.4vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  background-position: center;
+  padding-top: 20px;
+  position: relative;
+
+  @media (max-width:700px) {
+    min-height: 95vh;
+    justify-content: space-around;
+  }
+
+  >img {
+
+    // width: 50%;
+    @media (max-width:7000px) {
+      width: 80%;
+    }
+
+    @media (max-width:700px) {
+      width: 100%;
+    }
+  }
+
+  >div {
+    display: grid;
+    color: #fff;
+    justify-items: center;
+
+    >p:nth-child(1) {
+      font-size: clamp(50px, 4vw, 75px);
+    }
+
+    >p:nth-child(2) {
+      font-size: clamp(80px, 10vw, 100px);
+    }
+
+    >p:nth-child(3) {
+      font-size: clamp(18px, 5vw, 40px);
+      color: #9fa6ab;
+    }
+  }
+
+  .scroll {
+    width: 95%;
+    background: linear-gradient(#5a36b4c5, #362a84);
+    min-height: 200px;
+    position: absolute;
+    box-shadow: inset 0 0 15px 6px #1c1b33fa;
+    bottom: 0;
+    border-radius: 50px 50px 0 0;
+  }
+}
 </style>
+
+<!-- https://api.weatherapi.com/v1/forecast.json?q=Yerevan&days=1&key=d2e7790ef6a84f91a5455407241311 -->
