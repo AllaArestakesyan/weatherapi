@@ -22,12 +22,35 @@
     <img src="/House 4 3.png" alt="">
     <div class="scroll">
 
+      <div>
+        <span>Hourly Forecast</span>
+      </div>
+      <div ref="scrollRef" class="scroll-container" @mousedown="onMouseDown" @mouseleave="onMouseLeave"
+        @mouseup="onMouseUp" @mousemove="onMouseMove" @touchstart="onTouchStart" @touchmove="onTouchMove"
+        @touchend="onTouchEnd">
+        <div v-for="h in hour" :key="h.name">
+          <div>
+            <span>0 </span>
+            <span>AM</span>
+          </div>
+          <div>
+            <img :src="h.icon" alt="">
+          </div>
+          <div>
+            <p>{{ h.temp }} <sup>o</sup></p>
+          </div>
+        </div>
+
+
+
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="js">
 import { defineComponent } from 'vue';
+import { ref, reactive } from "vue";
 
 export default defineComponent({
   name: 'HomePage',
@@ -37,8 +60,67 @@ export default defineComponent({
       str: "/Default.png",
       bool: true,
       text: '',
-      obj: {}
+      obj: {},
+      hour: []
     }
+  },
+  setup() {
+    const scrollRef = ref(null);
+    const state = reactive({
+      isDragging: false,
+      startX: 0,
+      scrollLeft: 0,
+    });
+
+    const onMouseDown = (e) => {
+      state.isDragging = true;
+      state.startX = e.pageX - scrollRef.value.offsetLeft;
+      state.scrollLeft = scrollRef.value.scrollLeft;
+    };
+
+    const onMouseLeave = () => {
+      state.isDragging = false;
+    };
+
+    const onMouseUp = () => {
+      state.isDragging = false;
+    };
+
+    const onMouseMove = (e) => {
+      if (!state.isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - scrollRef.value.offsetLeft;
+      const walk = (x - state.startX) * 2; // Adjust scroll speed by multiplying
+      scrollRef.value.scrollLeft = state.scrollLeft - walk;
+    };
+
+    const onTouchStart = (e) => {
+      state.isDragging = true;
+      state.startX = e.touches[0].pageX - scrollRef.value.offsetLeft;
+      state.scrollLeft = scrollRef.value.scrollLeft;
+    };
+
+    const onTouchMove = (e) => {
+      if (!state.isDragging) return;
+      const x = e.touches[0].pageX - scrollRef.value.offsetLeft;
+      const walk = (x - state.startX) * 2; // Adjust scroll speed by multiplying
+      scrollRef.value.scrollLeft = state.scrollLeft - walk;
+    };
+
+    const onTouchEnd = () => {
+      state.isDragging = false;
+    };
+
+    return {
+      scrollRef,
+      onMouseDown,
+      onMouseLeave,
+      onMouseUp,
+      onMouseMove,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
+    };
   },
   methods: {
     addSrc() {
@@ -79,23 +161,33 @@ export default defineComponent({
           this.locations.push(data.city);
           localStorage.locations = JSON.stringify(this.locations)
         }
-        // const apiKey = 'd2e7790ef6a84f91a5455407241311'
-        // const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${data.city}`;
-        // fetch(url)
-        //   .then(response => response.json())
-        //   .then(data => {
-        //     console.log('===>', data);
-        //     this.obj = {
-        //       name: data.location.name,
-        //       country: data.location.country,
-        //       temp: data.current.temp_c,
-        //       icon: 'https:' + data.current.condition.icon,
-        //       text: data.current.condition.text
-        //     }
-        //   })
-        //   .catch(error => {
-        //     console.error('Error fetching weather data:', error);
-        //   });
+        const apiKey = 'd2e7790ef6a84f91a5455407241311'
+        const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${data.city}`;
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            console.log('===>', data.forecast.forecastday[0].hour);
+            for (let elm of data.forecast.forecastday[0].hour) {
+              this.hour.push({
+                time: new Date(elm.time),
+                temp_c: elm.temp_c,
+                icon: 'https:' + elm.current.condition.icon,
+                text: elm.current.condition.text
+
+              })
+            }
+
+            this.obj = {
+              name: data.location.name,
+              country: data.location.country,
+              temp: data.current.temp_c,
+              icon: 'https:' + data.current.condition.icon,
+              text: data.current.condition.text
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching weather data:', error);
+          });
       })
       .catch(error => {
         console.error('Error fetching location data:', error);
@@ -119,6 +211,7 @@ export default defineComponent({
 .navHome {
   padding: 30px;
   background: linear-gradient(#2e335a, #1c1b33);
+  background: linear-gradient(0.25turn, #1c1b33, #531c67, #1c1b33);
   position: sticky;
   top: 0;
   width: 100%;
@@ -172,6 +265,7 @@ export default defineComponent({
       right: 0;
       margin: auto;
       background: linear-gradient(#3f4783, #1c1b33);
+      background: linear-gradient(0.25turn, #1c1b33, #531c67, #1c1b33);
       border-radius: 50% 50% 0 0;
       width: 160px;
       padding: 10px 20px;
@@ -233,15 +327,15 @@ export default defineComponent({
 
   @media (max-width:700px) {
     min-height: 95vh;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   >img {
 
     // width: 50%;
-    @media (max-width:7000px) {
-      width: 80%;
-    }
+    width: 80%;
+    // @media (min-width:1000px) {
+    // }
 
     @media (max-width:700px) {
       width: 100%;
@@ -269,12 +363,63 @@ export default defineComponent({
 
   .scroll {
     width: 95%;
-    background: linear-gradient(#5a36b4c5, #362a84);
-    min-height: 200px;
+    background: linear-gradient(#2e335ada, #2e335ae4, #1c1b33);
+    background: linear-gradient(0.25turn, #1c1b33, #531c6788, #1c1b33);
+    height: 50%;
     position: absolute;
-    box-shadow: inset 0 0 15px 6px #1c1b33fa;
+    box-shadow: inset 0 0 15px 6px rgba(255, 255, 255, 0.348);
     bottom: 0;
     border-radius: 50px 50px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    @media (max-width:700px) {
+      height: 40%;
+    }
+
+    >div:nth-child(1) {
+      color: #9fa6ab;
+      padding: 20px 30px;
+      border-radius: 50px 50px 0 0;
+      border-bottom: 1px solid;
+      background: linear-gradient(0.25turn, #00000050, #531c6788, #00000050);
+      width: 100%;
+    }
+
+    >div:nth-child(2) {
+      cursor: grab;
+      padding: 0 50px;
+      width: 90%;
+      gap: 20px;
+      display: grid;
+      margin: auto;
+      overflow-x: hidden;
+      scrollbar-color: #0000;
+      grid-template-columns: repeat(24, 100px);
+      grid-auto-rows: 200px;
+      scroll-behavior: smooth;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+
+      >div {
+        cursor: grabbing;
+        border-radius: 50px;
+        border: 1px solid #48319D;
+        background-color: #391c6788;
+        display: grid;
+        justify-content: center;
+        text-align: center;
+        padding: 10px 5px;
+
+        img {
+          width: 90%;
+        }
+      }
+    }
   }
 }
 </style>

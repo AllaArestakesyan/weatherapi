@@ -22,7 +22,7 @@
     </div>
     <div>
       <div v-for="location in weatherData" :key="location.name">
-        <img src="/rec1.png" alt="">
+        <img src="/rec2.png" alt="">
         <img :src="location.icon" alt="">
         <div>
           <div>
@@ -62,7 +62,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    // localStorage.locations = JSON.stringify(['Erevan', 'New York', 'London', 'Tokyo', 'Sydney'])
+    // localStorage.locations = JSON.stringify([ 'New York', 'London', 'Tokyo', 'Sydney'])
     if (typeof localStorage !== 'undefined') {
       if (localStorage.locations === undefined) {
         this.str = 'localStorage is not supported.';
@@ -72,26 +72,26 @@ export default defineComponent({
     } else {
       this.str = 'localStorage is not supported.';
     }
-    //  const apiKey = 'd2e7790ef6a84f91a5455407241311'
-    // this.locations.forEach((location) => {
-    // const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
+    const apiKey = 'd2e7790ef6a84f91a5455407241311'
+    this.locations.forEach((location) => {
+      const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
 
-    //   fetch(url)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       console.log(data);
-    //       this.weatherData.push({
-    //         name: data.location.name,
-    //         country: data.location.country,
-    //         temp: data.current.temp_c,
-    //         icon:'https:'+data.current.condition.icon,
-    //         text:data.current.condition.text
-    //       });
-    //     })
-    //     .catch(error => {
-    //       console.error('Error fetching weather data:', error);
-    //     });
-    // });
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          this.weatherData.push({
+            name: data.location.name,
+            country: data.location.country,
+            temp: data.current.temp_c,
+            icon: 'https:' + data.current.condition.icon,
+            text: data.current.condition.text
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching weather data:', error);
+        });
+    });
   }
 });
 </script>
@@ -108,6 +108,7 @@ export default defineComponent({
 .weather {
   min-height: 100vh;
   background: linear-gradient(#2e335a, #1c1b33);
+  background: linear-gradient(0.25turn, #1c1b33, #361044, #1c1b33);
   font-family: font-Regular;
 
   .navWeather {
@@ -210,10 +211,12 @@ export default defineComponent({
         width: clamp(350px, 80%, 100%);
         align-items: center;
         // background: linear-gradient(#2e335a, #1c1b33);
-        background-color: #2e335a;
-        box-shadow: inset 0 0 15px 6px #1c1b33fa;
+        // background-color: #2e335a;
+        background: linear-gradient(0.25turn, #423f74, #423f74, #423f74);
+
+        box-shadow: inset 0 0 15px 3px #242340;
         display: flex;
-        padding: 10px 15px;
+        padding: 15px 15px;
         gap: 10px;
         border-radius: 8px;
 
