@@ -62,7 +62,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    // localStorage.locations = JSON.stringify([ 'New York', 'London', 'Tokyo', 'Sydney'])
+    // localStorage.locations = JSON.stringify([ 'Yerevan','New York', 'London', 'Tokyo', 'Sydney'])
     if (typeof localStorage !== 'undefined') {
       if (localStorage.locations === undefined) {
         this.str = 'localStorage is not supported.';
