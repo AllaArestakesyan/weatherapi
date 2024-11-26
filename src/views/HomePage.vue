@@ -32,8 +32,9 @@
             @touchend="onTouchEnd">
             <div v-for="h in hour" :key="h.name">
               <div>
-                <span>{{ new Date(h.time).getHours()<10?"0"+new Date(h.time).getHours():new Date(h.time).getHours()}} </span>
-                <span>  AM</span>
+                <span>{{ new Date(h.time).getHours() < 10 ? "0" + new Date(h.time).getHours() : new
+                  Date(h.time).getHours() }} </span>
+                    <span> AM</span>
               </div>
               <div>
                 <img :src="h.icon" alt="">
@@ -155,43 +156,43 @@ export default defineComponent({
     // // fetch('https://ipapi.co/json/')
     //   .then(response => response.json())
     //   .then(data => {
-        // const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
-        // if (!x) {
-        //   // console.log(data.city);
-        //   this.locations.push(data.city);
-        //   localStorage.locations = JSON.stringify(this.locations)
-        // }
-        const apiKey = 'd2e7790ef6a84f91a5455407241311'
-        const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
-        fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            console.log('===>', data.forecast.forecastday[0].hour);
-            for (let elm of data.forecast.forecastday[0].hour) {
-              this.hour.push({
-                time: elm.time,
-                temp_c: elm.temp_c,
-                icon: 'https:' + elm.condition?.icon,
-                text: elm.condition?.text
+    // const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
+    // if (!x) {
+    //   // console.log(data.city);
+    //   this.locations.push(data.city);
+    //   localStorage.locations = JSON.stringify(this.locations)
+    // }
+    const apiKey = 'd2e7790ef6a84f91a5455407241311'
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log('===>', data.forecast.forecastday[0].hour);
+        for (let elm of data.forecast.forecastday[0].hour) {
+          this.hour.push({
+            time: elm.time,
+            temp_c: elm.temp_c,
+            icon: 'https:' + elm.condition?.icon,
+            text: elm.condition?.text
 
-              })
-            }
-
-            this.obj = {
-              name: data.location.name,
-              country: data.location.country,
-              temp: data.current.temp_c,
-              icon: 'https:' + data.current.condition.icon,
-              text: data.current.condition.text
-            }
           })
-          .catch(error => {
-            console.error('Error fetching weather data:', error);
-          });
-      // })
-      // .catch(error => {
-      //   console.error('Error fetching location data:', error);
-      // });
+        }
+
+        this.obj = {
+          name: data.location.name,
+          country: data.location.country,
+          temp: data.current.temp_c,
+          icon: 'https:' + data.current.condition.icon,
+          text: data.current.condition.text
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching weather data:', error);
+      });
+    // })
+    // .catch(error => {
+    //   console.error('Error fetching location data:', error);
+    // });
   }
 });
 </script>
@@ -217,25 +218,29 @@ export default defineComponent({
     width: 60%;
     border-radius: 20px;
     overflow: hidden;
+    background-image: url('@/assets/image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 20px 0;
     min-height: 96.2vh;
     box-shadow: 0 0 10px 5px #595775;
+    position: relative;
 
     @media (max-width:1000px) {
       width: 80%;
-
     }
 
-    @media (max-width:700px) {
+    @media (max-width:600px) {
       border-radius: 0px;
       width: 100%;
       margin: 0;
+      height: 100vh;
     }
 
     .navHome {
       padding: 30px;
       background: linear-gradient(#2e335a, #1c1b33);
-      background: linear-gradient(0.25turn, #1c1b33, #531c67, #1c1b33);
+      background: linear-gradient(0.25turn, #1c1b33c1, #531c6786, #1c1b33c1);
       position: sticky;
       top: 0;
       width: 100%;
@@ -244,6 +249,7 @@ export default defineComponent({
       @media (max-width:700px) {
         bottom: 0;
         padding: 12px;
+      background: linear-gradient(0.25turn, #1c1b33, #531c67, #1c1b33);
         top: auto;
         position: absolute;
         display: flex;
@@ -337,10 +343,10 @@ export default defineComponent({
     }
 
     .home {
-      background-image: url('@/assets/image.png');
+      // background-image: url('@/assets/image.png');
       min-height: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
+      // background-repeat: no-repeat;
+      // background-size: cover;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -414,7 +420,6 @@ export default defineComponent({
 
         >div:nth-child(2) {
           cursor: grab;
-          padding: 0 50px;
           width: 90%;
           gap: 20px;
           display: grid;
@@ -438,7 +443,6 @@ export default defineComponent({
             justify-content: center;
             text-align: center;
             padding: 20px 5px;
-
             img {
               width: 90%;
             }
