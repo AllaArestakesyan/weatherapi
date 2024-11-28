@@ -155,47 +155,47 @@ export default defineComponent({
       this.text = "..."
     }
 
-    // // fetch('https://api.ipbase.com/v1/json/')
-    // // // fetch('https://ipapi.co/json/')
-    // //   .then(response => response.json())
-    // //   .then(data => {
-    // // const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
-    // // if (!x) {
-    // //   // console.log(data.city);
-    // //   this.locations.push(data.city);
-    // //   localStorage.locations = JSON.stringify(this.locations)
-    // // }
-    // const apiKey = 'd2e7790ef6a84f91a5455407241311'
-    // const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
-    // fetch(url)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log('===>', data.forecast.forecastday[0].hour);
-    //     for (let elm of data.forecast.forecastday[0].hour) {
-    //       this.hour.push({
-    //         time: elm.time,
-    //         temp_c: elm.temp_c,
-    //         icon: 'https:' + elm.condition?.icon,
-    //         text: elm.condition?.text
+    fetch('https://api.ipbase.com/v1/json/')
+      // fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
+        if (!x) {
+          // console.log(data.city);
+          this.locations.push(data.city);
+          localStorage.locations = JSON.stringify(this.locations)
+        }
+        const apiKey = 'd2e7790ef6a84f91a5455407241311'
+        const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            console.log('===>', data.forecast.forecastday[0].hour);
+            for (let elm of data.forecast.forecastday[0].hour) {
+              this.hour.push({
+                time: elm.time,
+                temp_c: elm.temp_c,
+                icon: 'https:' + elm.condition?.icon,
+                text: elm.condition?.text
 
-    //       })
-    //     }
+              })
+            }
 
-    //     this.obj = {
-    //       name: data.location.name,
-    //       country: data.location.country,
-    //       temp: data.current.temp_c,
-    //       icon: 'https:' + data.current.condition.icon,
-    //       text: data.current.condition.text
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.error('Error fetching weather data:', error);
-    //   });
-    // })
-    // .catch(error => {
-    //   console.error('Error fetching location data:', error);
-    // });
+            this.obj = {
+              name: data.location.name,
+              country: data.location.country,
+              temp: data.current.temp_c,
+              icon: 'https:' + data.current.condition.icon,
+              text: data.current.condition.text
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching weather data:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error fetching location data:', error);
+      });
   }
 });
 </script>
