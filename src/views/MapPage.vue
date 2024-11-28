@@ -20,10 +20,10 @@
             </nav>
             <div>
                 <LMap ref="leafletMap" class="maps" @update:zoom="onZoomChange" :zoom="zoom"
+                 @click="ondblclick"
                     :center="[location.latitude, location.longitude]">
                     <LTileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
-                    <LMarker :lat-lng="[location.latitude, location.longitude]" />
                 </LMap>
             </div>
 
@@ -47,7 +47,7 @@
 <script lang="js">
 
 import { defineComponent } from 'vue';
-import { LMap, LTileLayer, LMarker } from "vue3-leaflet";
+import { LMap, LTileLayer, } from "vue3-leaflet";
 import { ref } from "vue";
 
 export default defineComponent({
@@ -55,7 +55,7 @@ export default defineComponent({
     components: {
         LMap,
         LTileLayer,
-        LMarker
+
 
     },
     setup() {
@@ -84,7 +84,7 @@ export default defineComponent({
             console.log(navigator);
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
-                    console.log('==>', pos);
+                    // console.log('==>', pos);
                     this.location = {
                         latitude: pos.coords.latitude,
                         longitude: pos.coords.longitude,
@@ -93,9 +93,6 @@ export default defineComponent({
                     this.mapReady = true;
                 }
             )
-            console.log("ok");
-
-
         } else {
             this.error = "Geolocation is not supported by this browser.";
         }
@@ -113,7 +110,29 @@ export default defineComponent({
                 this.leafletMap.setZoom(this.zoom);
             }
         },
-
+        async ondblclick(e) {
+            const { lat, lng } = e.latlng;
+            try {
+                const response = await fetch(
+                    `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+                );
+                const data = await response.json();
+                console.log(data);
+                console.log(data.address.country);
+                let a = confirm(data.address.country)
+                console.log(a);
+                if (a) {
+                    let arr = localStorage.locations ? JSON.parse(localStorage.locations):[]
+                    let x = arr.includes(data.address.country)
+                    if (!x) {
+                        arr.push(data.address.country);
+                        localStorage.locations = JSON.stringify(arr)
+                    }
+                }
+            } catch (error) {
+                console.error("Reverse Geocoding Failed", error);
+            }
+        },
         handleLocationError(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:

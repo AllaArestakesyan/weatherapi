@@ -25,9 +25,10 @@
           <p>{{ obj.country ? obj.country : "Armenia" }}</p>
         </div>
         <img src="/House 4 3.png" alt="">
-        <div class="scroll">
-
-          <div>
+        <div class="scroll" ref="scrollRef1">
+          <div @mousedown="onMouseDown1" @mouseleave="onMouseLeave1" @mouseup="onMouseUp1" @mousemove="onMouseMove1"
+            @touchstart="onTouchStart1" @touchmove="onTouchMove1" @touchend="onTouchEnd1">
+            <p></p>
             <span>Hourly Forecast</span>
           </div>
           <div ref="scrollRef" class="scroll-container" @mousedown="onMouseDown" @mouseleave="onMouseLeave"
@@ -46,6 +47,256 @@
                 <p>{{ h.temp_c }} <sup>o</sup></p>
               </div>
             </div>
+
+
+<!-- 
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <span>{{ 10 }} </span>
+                <span> AM</span>
+              </div>
+              <div>
+                <img src="moon.png" alt="">
+              </div>
+              <div>
+                <p>{{ 19 }} <sup>o</sup></p>
+              </div>
+            </div> -->
+
+
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -66,15 +317,23 @@ export default defineComponent({
       bool: true,
       text: '',
       obj: {},
-      hour: []
+      hour: [],
+      error: ""
     }
   },
   setup() {
     const scrollRef = ref(null);
+    const scrollRef1 = ref(null);
     const state = reactive({
       isDragging: false,
       startX: 0,
       scrollLeft: 0,
+    });
+    const state1 = reactive({
+      isDragging1: false,
+      startY: 0,
+      pageY: 0,
+      height: "40%"
     });
 
     const onMouseDown = (e) => {
@@ -106,9 +365,10 @@ export default defineComponent({
     };
 
     const onTouchMove = (e) => {
+      // console.log(e);
       if (!state.isDragging) return;
       const x = e.touches[0].pageX - scrollRef.value.offsetLeft;
-      const walk = (x - state.startX) * 2; // Adjust scroll speed by multiplying
+      const walk = (x - state.startX); // Adjust scroll speed by multiplying
       scrollRef.value.scrollLeft = state.scrollLeft - walk;
     };
 
@@ -116,8 +376,49 @@ export default defineComponent({
       state.isDragging = false;
     };
 
+
+
+
+    const onMouseDown1 = () => {
+      state1.isDragging1 = true;
+    };
+    const onMouseLeave1 = () => {
+      state1.isDragging1 = false;
+    };
+
+    const onMouseUp1 = () => {
+      state1.isDragging1 = false;
+    };
+
+    const onMouseMove1 = (e) => {
+      if (!state1.isDragging1) return;
+      e.preventDefault();
+      let x = window.innerHeight - e.pageY
+      if (x <= 600 && x >= 250) {
+        state1.pageY = x
+        scrollRef1.value.style.height = x + 50 + "px"
+      }
+    };
+
+    const onTouchStart1 = () => {
+      state1.isDragging1 = true;
+    };
+
+    const onTouchMove1 = (e) => {
+      if (!state1.isDragging1) return;
+      let x = window.innerHeight - e.touches[0].pageY
+      if (x < 650 && x > 250) {
+        scrollRef1.value.style.height = window.innerHeight - e.touches[0].pageY + "px"
+      }
+    };
+
+    const onTouchEnd1 = () => {
+      state1.isDragging1 = false;
+    };
+
     return {
       scrollRef,
+      scrollRef1,
       onMouseDown,
       onMouseLeave,
       onMouseUp,
@@ -125,6 +426,13 @@ export default defineComponent({
       onTouchStart,
       onTouchMove,
       onTouchEnd,
+      onMouseDown1,
+      onMouseLeave1,
+      onMouseUp1,
+      onMouseMove1,
+      onTouchStart1,
+      onTouchMove1,
+      onTouchEnd1,
     };
   },
   methods: {
@@ -155,47 +463,102 @@ export default defineComponent({
       this.text = "..."
     }
 
-    fetch('https://api.ipbase.com/v1/json/')
-      // fetch('https://ipapi.co/json/')
-      .then(response => response.json())
-      .then(data => {
-        const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
-        if (!x) {
-          // console.log(data.city);
-          this.locations.push(data.city);
-          localStorage.locations = JSON.stringify(this.locations)
-        }
-        const apiKey = 'd2e7790ef6a84f91a5455407241311'
-        const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
-        fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            console.log('===>', data.forecast.forecastday[0].hour);
-            for (let elm of data.forecast.forecastday[0].hour) {
-              this.hour.push({
-                time: elm.time,
-                temp_c: elm.temp_c,
-                icon: 'https:' + elm.condition?.icon,
-                text: elm.condition?.text
+    if (navigator.geolocation) {
+      console.log(navigator);
+      navigator.geolocation.getCurrentPosition(
+        async (pos) => {
+          console.log('==>', pos);
+          const { latitude, longitude } = pos.coords
+          try {
+            const response = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+            );
+            const data = await response.json();
+            console.log(data);
+            console.log(data.address.country);
+            let arr = localStorage.locations ? JSON.parse(localStorage.locations) : []
+            let x = arr.includes(data.address.country)
+            if (!x) {
+              arr.push(data.address.country);
+              localStorage.locations = JSON.stringify(arr)
+            }
+            const apiKey = 'd2e7790ef6a84f91a5455407241311'
+            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                console.log('===>', data.forecast.forecastday[0].hour);
+                for (let elm of data.forecast.forecastday[0].hour) {
+                  this.hour.push({
+                    time: elm.time,
+                    temp_c: elm.temp_c,
+                    icon: 'https:' + elm.condition?.icon,
+                    text: elm.condition?.text
 
+                  })
+                }
+
+                this.obj = {
+                  name: data.location.name,
+                  country: data.location.country,
+                  temp: data.current.temp_c,
+                  icon: 'https:' + data.current.condition.icon,
+                  text: data.current.condition.text
+                }
               })
-            }
+              .catch(error => {
+                console.error('Error fetching weather data:', error);
+              });
+          } catch (error) {
+            console.error("Reverse Geocoding Failed", error);
+          }
+        }
+      )
+    } else {
+      this.error = "Geolocation is not supported by this browser.";
+    }
 
-            this.obj = {
-              name: data.location.name,
-              country: data.location.country,
-              temp: data.current.temp_c,
-              icon: 'https:' + data.current.condition.icon,
-              text: data.current.condition.text
-            }
-          })
-          .catch(error => {
-            console.error('Error fetching weather data:', error);
-          });
-      })
-      .catch(error => {
-        console.error('Error fetching location data:', error);
-      });
+    // fetch('https://api.ipbase.com/v1/json/')
+    //   // fetch('https://ipapi.co/json/')
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
+    //     if (!x) {
+    //       // console.log(data.city);
+    //       this.locations.push(data.city);
+    //       localStorage.locations = JSON.stringify(this.locations)
+    //     }
+    //     const apiKey = 'd2e7790ef6a84f91a5455407241311'
+    //     const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
+    //     fetch(url)
+    //       .then(response => response.json())
+    //       .then(data => {
+    //         console.log('===>', data.forecast.forecastday[0].hour);
+    //         for (let elm of data.forecast.forecastday[0].hour) {
+    //           this.hour.push({
+    //             time: elm.time,
+    //             temp_c: elm.temp_c,
+    //             icon: 'https:' + elm.condition?.icon,
+    //             text: elm.condition?.text
+
+    //           })
+    //         }
+
+    //         this.obj = {
+    //           name: data.location.name,
+    //           country: data.location.country,
+    //           temp: data.current.temp_c,
+    //           icon: 'https:' + data.current.condition.icon,
+    //           text: data.current.condition.text
+    //         }
+    //       })
+    //       .catch(error => {
+    //         console.error('Error fetching weather data:', error);
+    //       });
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching location data:', error);
+    //   });
   }
 });
 </script>
@@ -365,12 +728,18 @@ export default defineComponent({
       }
 
       >img {
-
         // width: 50%;
         width: 80%;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        scroll-behavior: smooth;
+        -ms-user-select: none;
+        pointer-events: none;
+        cursor: context-menu;
+
         // @media (min-width:1000px) {
         // }
-
         @media (max-width:700px) {
           width: 100%;
         }
@@ -399,7 +768,7 @@ export default defineComponent({
         width: 95%;
         background: linear-gradient(#2e335ada, #2e335ae4, #1c1b33);
         background: linear-gradient(0.25turn, #1c1b33, #531c6788, #1c1b33);
-        height: 50%;
+        height: 40%;
         position: absolute;
         box-shadow: inset 0 0 15px 6px rgba(255, 255, 255, 0.348);
         bottom: 0;
@@ -415,11 +784,22 @@ export default defineComponent({
 
         >div:nth-child(1) {
           color: #9fa6ab;
-          padding: 20px 30px;
+          cursor: pointer;
+          padding: 10px 30px 20px;
           border-radius: 50px 50px 0 0;
           border-bottom: 1px solid;
           background: linear-gradient(0.25turn, #00000050, #531c6788, #00000050);
           width: 100%;
+          display: grid;
+          gap: 10px;
+
+          >p {
+            width: clamp(60px, 50%, 150px);
+            height: 4px;
+            border-radius: 5px;
+            background-color: #9fa6ab;
+            margin: auto;
+          }
         }
 
         >div:nth-child(2) {
@@ -437,6 +817,9 @@ export default defineComponent({
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
+          align-content: start;
+          height: 100%;
+          padding-top: 20px;
 
           >div {
             cursor: grabbing;
