@@ -483,7 +483,7 @@ export default defineComponent({
               localStorage.locations = JSON.stringify(arr)
             }
             const apiKey = 'd2e7790ef6a84f91a5455407241311'
-            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
+            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${data.address.country}`;
             fetch(url)
               .then(response => response.json())
               .then(data => {
