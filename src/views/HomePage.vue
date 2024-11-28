@@ -49,7 +49,7 @@
             </div>
 
 
-<!-- 
+ 
             <div>
               <div>
                 <span>{{ 10 }} </span>
@@ -289,7 +289,7 @@
               <div>
                 <p>{{ 19 }} <sup>o</sup></p>
               </div>
-            </div> -->
+            </div> 
 
 
 
@@ -393,10 +393,12 @@ export default defineComponent({
     const onMouseMove1 = (e) => {
       if (!state1.isDragging1) return;
       e.preventDefault();
-      let x = window.innerHeight - e.pageY
+      let x = window.innerHeight - e.pageY;
+      let z = window.innerWidth > 600?70:50
+
       if (x <= 600 && x >= 250) {
-        state1.pageY = x
-        scrollRef1.value.style.height = x + 50 + "px"
+        state1.pageY = x;
+        scrollRef1.value.style.height = x + z + "px"
       }
     };
 
@@ -468,50 +470,50 @@ export default defineComponent({
       navigator.geolocation.getCurrentPosition(
         async (pos) => {
           console.log('==>', pos);
-          const { latitude, longitude } = pos.coords
-          try {
-            const response = await fetch(
-              `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-            );
-            const data = await response.json();
-            console.log(data);
-            console.log(data.address.country);
-            let arr = localStorage.locations ? JSON.parse(localStorage.locations) : []
-            let x = arr.includes(data.address.country)
-            if (!x) {
-              arr.push(data.address.country);
-              localStorage.locations = JSON.stringify(arr)
-            }
-            const apiKey = 'd2e7790ef6a84f91a5455407241311'
-            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${data.address.country}`;
-            fetch(url)
-              .then(response => response.json())
-              .then(data => {
-                console.log('===>', data.forecast.forecastday[0].hour);
-                for (let elm of data.forecast.forecastday[0].hour) {
-                  this.hour.push({
-                    time: elm.time,
-                    temp_c: elm.temp_c,
-                    icon: 'https:' + elm.condition?.icon,
-                    text: elm.condition?.text
+          // const { latitude, longitude } = pos.coords
+          // try {
+          //   const response = await fetch(
+          //     `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+          //   );
+          //   const data = await response.json();
+          //   console.log(data);
+          //   console.log(data.address.country);
+          //   let arr = localStorage.locations ? JSON.parse(localStorage.locations) : []
+          //   let x = arr.includes(data.address.country)
+          //   if (!x) {
+          //     arr.push(data.address.country);
+          //     localStorage.locations = JSON.stringify(arr)
+          //   }
+          //   const apiKey = 'd2e7790ef6a84f91a5455407241311'
+          //   const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${data.address.country}`;
+          //   fetch(url)
+          //     .then(response => response.json())
+          //     .then(data => {
+          //       console.log('===>', data.forecast.forecastday[0].hour);
+          //       for (let elm of data.forecast.forecastday[0].hour) {
+          //         this.hour.push({
+          //           time: elm.time,
+          //           temp_c: elm.temp_c,
+          //           icon: 'https:' + elm.condition?.icon,
+          //           text: elm.condition?.text
 
-                  })
-                }
+          //         })
+          //       }
 
-                this.obj = {
-                  name: data.location.name,
-                  country: data.location.country,
-                  temp: data.current.temp_c,
-                  icon: 'https:' + data.current.condition.icon,
-                  text: data.current.condition.text
-                }
-              })
-              .catch(error => {
-                console.error('Error fetching weather data:', error);
-              });
-          } catch (error) {
-            console.error("Reverse Geocoding Failed", error);
-          }
+          //       this.obj = {
+          //         name: data.location.name,
+          //         country: data.location.country,
+          //         temp: data.current.temp_c,
+          //         icon: 'https:' + data.current.condition.icon,
+          //         text: data.current.condition.text
+          //       }
+          //     })
+          //     .catch(error => {
+          //       console.error('Error fetching weather data:', error);
+          //     });
+          // } catch (error) {
+          //   console.error("Reverse Geocoding Failed", error);
+          // }
         }
       )
     } else {

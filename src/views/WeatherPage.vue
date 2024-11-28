@@ -107,21 +107,24 @@ export default defineComponent({
   text-decoration: none;
   box-sizing: border-box;
 }
+body{
+  background: linear-gradient(0.25turn, #1c1b33, #1f0a27, #1c1b33);
 
+}
 .weather {
   display: flex;
   justify-content: center;
   background: linear-gradient(0.25turn, #1c1b33, #1f0a27, #1c1b33);
-  min-height: 100vh;
+  height: 100vh;
 
   >div {
     width: 60%;
     border-radius: 20px;
-    overflow: hidden;
-    background-color: #ffffff11;
+    // overflow: hidden;
+    // background-color: #ffffff11;
     margin: 20px 0;
-    min-height: 96.2vh;
-    box-shadow: 0 0 10px 5px #595775;
+    height: 96.2vh;
+    // box-shadow: 0 0 10px 5px #595775;
     position: relative;
 
     @media (max-width:1000px) {
@@ -140,7 +143,7 @@ export default defineComponent({
       flex-direction: column;
       align-content: center;
       justify-content: center;
-
+      
       >div:nth-child(1) {
         padding: 30px;
         position: sticky;
