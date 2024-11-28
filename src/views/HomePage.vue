@@ -3,10 +3,13 @@
     <div>
       <nav class="navHome">
         <ul>
+          <router-link to="/map">Map</router-link>
           <router-link to="/weather">Weather</router-link>
         </ul>
         <div>
-          <img src="/Map.png" alt="">
+          <router-link to="/map">
+            <img src="/Map.png" alt="">
+          </router-link>
           <div @mousedown="addSrc(bool)" @mouseup="addSrc(bool)">
             <img :src="str" alt="">
           </div>
@@ -152,43 +155,43 @@ export default defineComponent({
       this.text = "..."
     }
 
-    // fetch('https://api.ipbase.com/v1/json/')
-    // // fetch('https://ipapi.co/json/')
+    // // fetch('https://api.ipbase.com/v1/json/')
+    // // // fetch('https://ipapi.co/json/')
+    // //   .then(response => response.json())
+    // //   .then(data => {
+    // // const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
+    // // if (!x) {
+    // //   // console.log(data.city);
+    // //   this.locations.push(data.city);
+    // //   localStorage.locations = JSON.stringify(this.locations)
+    // // }
+    // const apiKey = 'd2e7790ef6a84f91a5455407241311'
+    // const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
+    // fetch(url)
     //   .then(response => response.json())
     //   .then(data => {
-    // const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
-    // if (!x) {
-    //   // console.log(data.city);
-    //   this.locations.push(data.city);
-    //   localStorage.locations = JSON.stringify(this.locations)
-    // }
-    const apiKey = 'd2e7790ef6a84f91a5455407241311'
-    const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log('===>', data.forecast.forecastday[0].hour);
-        for (let elm of data.forecast.forecastday[0].hour) {
-          this.hour.push({
-            time: elm.time,
-            temp_c: elm.temp_c,
-            icon: 'https:' + elm.condition?.icon,
-            text: elm.condition?.text
+    //     console.log('===>', data.forecast.forecastday[0].hour);
+    //     for (let elm of data.forecast.forecastday[0].hour) {
+    //       this.hour.push({
+    //         time: elm.time,
+    //         temp_c: elm.temp_c,
+    //         icon: 'https:' + elm.condition?.icon,
+    //         text: elm.condition?.text
 
-          })
-        }
+    //       })
+    //     }
 
-        this.obj = {
-          name: data.location.name,
-          country: data.location.country,
-          temp: data.current.temp_c,
-          icon: 'https:' + data.current.condition.icon,
-          text: data.current.condition.text
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching weather data:', error);
-      });
+    //     this.obj = {
+    //       name: data.location.name,
+    //       country: data.location.country,
+    //       temp: data.current.temp_c,
+    //       icon: 'https:' + data.current.condition.icon,
+    //       text: data.current.condition.text
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching weather data:', error);
+    //   });
     // })
     // .catch(error => {
     //   console.error('Error fetching location data:', error);
@@ -213,6 +216,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   background: linear-gradient(0.25turn, #1c1b33, #1f0a27, #1c1b33);
+  min-height: 100vh;
 
   >div {
     width: 60%;
@@ -230,7 +234,7 @@ export default defineComponent({
       width: 80%;
     }
 
-    @media (max-width:600px) {
+    @media (max-width:700px) {
       border-radius: 0px;
       width: 100%;
       margin: 0;
@@ -249,7 +253,7 @@ export default defineComponent({
       @media (max-width:700px) {
         bottom: 0;
         padding: 12px;
-      background: linear-gradient(0.25turn, #1c1b33, #531c67, #1c1b33);
+        background: linear-gradient(0.25turn, #1c1b33, #531c67, #1c1b33);
         top: auto;
         position: absolute;
         display: flex;
@@ -443,6 +447,7 @@ export default defineComponent({
             justify-content: center;
             text-align: center;
             padding: 20px 5px;
+
             img {
               width: 90%;
             }
