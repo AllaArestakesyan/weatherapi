@@ -6,16 +6,18 @@
         <div>
           <ul>
             <router-link to="/">Home</router-link>
+            <button @click="clearData">Clear data</button>
           </ul>
           <div>
             <router-link to="/"><img src="/left.png" alt=""> <span>Weather</span></router-link>
-            <img src="/menu2.png" alt="">
+            <!-- <img src="/menu2.png" alt=""  @click="clearData"> -->
+            <button @click="clearData">Clear data</button>
           </div>
         </div>
         <div>
           <div>
             <img src="/search.png" alt="">
-            <input placeholder="Search for a city or airport" type="text">
+            <input placeholder="Search by country name" type="text" @input="search">
           </div>
         </div>
       </nav>
@@ -124,6 +126,35 @@ export default defineComponent({
             console.error('Error fetching weather data:', error);
           });
       });
+    },
+    search(text) {
+      console.log(text.target.value);
+      const apiKey = 'd2e7790ef6a84f91a5455407241311';
+      this.weatherData = []
+      this.locations.filter(elm => elm.toLowerCase().includes(text.target.value.toLowerCase())).forEach((location) => {
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            this.weatherData.push({
+              name: data.location.name,
+              country: data.location.country,
+              temp: data.current.temp_c,
+              icon: 'https:' + data.current.condition.icon,
+              text: data.current.condition.text
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching weather data:', error);
+          });
+      });
+    },
+    clearData() {
+      this.locations = []
+      this.weatherData = []
+      localStorage.locations = JSON.stringify([])
     }
   }
 });
@@ -176,6 +207,22 @@ body {
       align-content: center;
       justify-content: center;
 
+      button {
+        background-color: #0000;
+        color: #9fa6ab;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        font-weight: 900;
+        transition: 0.4s;
+
+        &:hover {
+          color: #fff;
+          cursor: pointer;
+
+        }
+      }
+
       >div:nth-child(1) {
         padding: 30px;
         position: sticky;
@@ -208,6 +255,8 @@ body {
           a.router-link-exact-active {
             color: #fff;
           }
+
+
         }
 
         div {
@@ -368,5 +417,4 @@ body {
       }
     }
   }
-}
-</style>
+}</style>
