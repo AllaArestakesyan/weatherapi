@@ -11,12 +11,6 @@
                         <img src="/menu2.png" alt="">
                     </div>
                 </div>
-                <!-- <div>
-                    <div>
-                        <img src="/search.png" alt="">
-                        <input placeholder="Search for a city or airport" type="text">
-                    </div>
-                </div> -->
             </nav>
             <div>
                 <LMap ref="leafletMap" class="maps" @update:zoom="onZoomChange" :zoom="zoom"
@@ -55,8 +49,6 @@ export default defineComponent({
     components: {
         LMap,
         LTileLayer,
-
-
     },
     setup() {
         const leafletMap = ref(null);
@@ -71,8 +63,8 @@ export default defineComponent({
     data() {
         return {
             location: {
-                latitude: 40.1639931, // Default latitude
-                longitude: 44.513157, // Default longitude
+                latitude: 40.1639931, 
+                longitude: 44.513157,
             },
             error: null,
             mapReady: false,
@@ -84,7 +76,6 @@ export default defineComponent({
             console.log(navigator);
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
-                    // console.log('==>', pos);
                     this.location = {
                         latitude: pos.coords.latitude,
                         longitude: pos.coords.longitude,
@@ -148,8 +139,7 @@ export default defineComponent({
                     this.error = "An unknown error occurred.";
             }
         },
-    },
-
+    }
 })
 </script>
 

@@ -125,27 +125,20 @@ export default defineComponent({
     const onTouchEnd = () => {
       state.isDragging = false;
     };
-
-
-
-
     const onMouseDown1 = () => {
       state1.isDragging1 = true;
     };
     const onMouseLeave1 = () => {
       state1.isDragging1 = false;
     };
-
     const onMouseUp1 = () => {
       state1.isDragging1 = false;
     };
-
     const onMouseMove1 = (e) => {
       if (!state1.isDragging1) return;
       e.preventDefault();
       let x = window.innerHeight - e.pageY;
-      let z = window.innerWidth > 600?80:60
-
+      let z = window.innerWidth > 600 ? 80 : 60
       if (x <= 600 && x >= 250) {
         state1.pageY = x;
         scrollRef1.value.style.height = x + z + "px"
@@ -203,13 +196,11 @@ export default defineComponent({
     }
   },
   mounted() {
-    // localStorage.locations = JSON.stringify(['Erevan', 'New York', 'London', 'Tokyo', 'Sydney'])
     if (typeof localStorage !== 'undefined') {
       if (localStorage.locations === undefined) {
         this.text = "..."
       } else {
         this.locations = JSON.parse(localStorage.locations)
-        // console.log(this.locations);
       }
     } else {
       this.text = "..."
@@ -284,10 +275,12 @@ export default defineComponent({
   font-family: font-Regular;
 
 }
-img{
+
+img {
   cursor: context-menu;
 
 }
+
 .homepage {
   display: flex;
   justify-content: center;

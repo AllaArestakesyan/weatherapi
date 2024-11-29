@@ -33,11 +33,8 @@
             <div>
               <div>
                 <p>
-                  <!-- <span>H:24<sup>o</sup> </span>  &nbsp;
-                <span>L:18<sup>o</sup> </span> -->
                 </p>
                 <p>{{ location.name }}, {{ location.country }}</p>
-
               </div>
               <div>
                 {{ location.text }}
@@ -65,13 +62,11 @@ export default defineComponent({
   data() {
     return {
       locations: [],
-      // locations: ['Erevan', 'New York', 'London', 'Tokyo', 'Sydney'],
       weatherData: [],
       str: ""
     };
   },
   mounted() {
-    // localStorage.locations = JSON.stringify([ 'Yerevan','New York', 'London', 'Tokyo', 'Sydney'])
     if (typeof localStorage !== 'undefined') {
       if (localStorage.locations === undefined) {
         this.str = 'localStorage is not supported.';
