@@ -19,11 +19,15 @@
         </div>
       </nav>
       <div class="home">
-        <div>
+        <div v-if="!errBool">
           <p>{{ obj.name ? obj.name : "Yerevan" }}</p>
           <p>{{ obj.temp ? Math.round(obj.temp) : "0" }}<sup>o</sup></p>
           <p>{{ obj.country ? obj.country : "Armenia" }}</p>
         </div>
+
+        <p class="p" v-else-if="errBool">{{error}}</p>
+
+
         <img src="/House 4 3.png" alt="">
         <div class="scroll" ref="scrollRef1">
           <div @mousedown="onMouseDown1" @mouseleave="onMouseLeave1" @mouseup="onMouseUp1" @mousemove="onMouseMove1"
@@ -65,6 +69,7 @@ export default defineComponent({
       locations: [],
       str: "/Default.png",
       bool: true,
+      errBool:true,
       text: '',
       obj: {},
       hour: [],
@@ -211,6 +216,7 @@ export default defineComponent({
       navigator.geolocation.getCurrentPosition(
         async (pos) => {
           console.log('==>', pos);
+          this.errBool = false
           const { latitude, longitude } = pos.coords
           try {
             const response = await fetch(
@@ -257,6 +263,9 @@ export default defineComponent({
           }
         }
       )
+      if(this.errBool){
+        this.error = "Geolocation is not supported by this browser."
+      }
     } else {
       this.error = "Geolocation is not supported by this browser.";
     }
@@ -413,6 +422,10 @@ img {
           color: #fff;
         }
       }
+    }
+    .p{
+      color: #9fa6ab;
+      font-size: 22px;
     }
 
     .home {
