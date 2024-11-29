@@ -41,6 +41,12 @@
               </div>
               <div>
                 {{ location.text }}
+
+                <button @click="deleteByName(location.country)"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 -960 960 960" fill="#e8eaed">
+                    <path
+                      d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                  </svg></button>
               </div>
             </div>
           </div>
@@ -95,6 +101,35 @@ export default defineComponent({
           console.error('Error fetching weather data:', error);
         });
     });
+  },
+  methods: {
+    deleteByName(text) {
+      console.log(text);
+      this.locations = JSON.parse(localStorage.locations)
+      this.locations = this.locations.filter(elm => elm != text)
+      localStorage.locations = JSON.stringify(this.locations);
+      const apiKey = 'd2e7790ef6a84f91a5455407241311';
+      this.weatherData = []
+      this.locations.forEach((location) => {
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            this.weatherData.push({
+              name: data.location.name,
+              country: data.location.country,
+              temp: data.current.temp_c,
+              icon: 'https:' + data.current.condition.icon,
+              text: data.current.condition.text
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching weather data:', error);
+          });
+      });
+    }
   }
 });
 </script>
@@ -107,10 +142,12 @@ export default defineComponent({
   text-decoration: none;
   box-sizing: border-box;
 }
-body{
+
+body {
   background: linear-gradient(0.25turn, #1c1b33, #1f0a27, #1c1b33);
 
 }
+
 .weather {
   display: flex;
   justify-content: center;
@@ -143,7 +180,7 @@ body{
       flex-direction: column;
       align-content: center;
       justify-content: center;
-      
+
       >div:nth-child(1) {
         padding: 30px;
         position: sticky;
@@ -311,6 +348,21 @@ body{
             >div {
               display: grid;
               gap: 5px;
+
+              button {
+                background-color: #0000;
+                border: none;
+                outline: none;
+                cursor: pointer;
+
+                svg {
+                  width: 30px;
+                }
+
+                :hover {
+                  fill: #9fa6ab;
+                }
+              }
             }
           }
 
