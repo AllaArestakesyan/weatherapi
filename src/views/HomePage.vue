@@ -47,256 +47,6 @@
                 <p>{{ h.temp_c }} <sup>o</sup></p>
               </div>
             </div>
-
-
- 
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <span>{{ 10 }} </span>
-                <span> AM</span>
-              </div>
-              <div>
-                <img src="moon.png" alt="">
-              </div>
-              <div>
-                <p>{{ 19 }} <sup>o</sup></p>
-              </div>
-            </div> 
-
-
-
-
-
-
-
           </div>
         </div>
       </div>
@@ -394,7 +144,7 @@ export default defineComponent({
       if (!state1.isDragging1) return;
       e.preventDefault();
       let x = window.innerHeight - e.pageY;
-      let z = window.innerWidth > 600?70:50
+      let z = window.innerWidth > 600?80:60
 
       if (x <= 600 && x >= 250) {
         state1.pageY = x;
@@ -409,7 +159,7 @@ export default defineComponent({
     const onTouchMove1 = (e) => {
       if (!state1.isDragging1) return;
       let x = window.innerHeight - e.touches[0].pageY
-      if (x < 650 && x > 250) {
+      if (x < 600 && x > 250) {
         scrollRef1.value.style.height = window.innerHeight - e.touches[0].pageY + "px"
       }
     };
@@ -470,97 +220,55 @@ export default defineComponent({
       navigator.geolocation.getCurrentPosition(
         async (pos) => {
           console.log('==>', pos);
-          // const { latitude, longitude } = pos.coords
-          // try {
-          //   const response = await fetch(
-          //     `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-          //   );
-          //   const data = await response.json();
-          //   console.log(data);
-          //   console.log(data.address.country);
-          //   let arr = localStorage.locations ? JSON.parse(localStorage.locations) : []
-          //   let x = arr.includes(data.address.country)
-          //   if (!x) {
-          //     arr.push(data.address.country);
-          //     localStorage.locations = JSON.stringify(arr)
-          //   }
-          //   const apiKey = 'd2e7790ef6a84f91a5455407241311'
-          //   const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${data.address.country}`;
-          //   fetch(url)
-          //     .then(response => response.json())
-          //     .then(data => {
-          //       console.log('===>', data.forecast.forecastday[0].hour);
-          //       for (let elm of data.forecast.forecastday[0].hour) {
-          //         this.hour.push({
-          //           time: elm.time,
-          //           temp_c: elm.temp_c,
-          //           icon: 'https:' + elm.condition?.icon,
-          //           text: elm.condition?.text
+          const { latitude, longitude } = pos.coords
+          try {
+            const response = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+            );
+            const data = await response.json();
+            console.log(data);
+            console.log(data.address.country);
+            let arr = localStorage.locations ? JSON.parse(localStorage.locations) : []
+            let x = arr.includes(data.address.country)
+            if (!x) {
+              arr.push(data.address.country);
+              localStorage.locations = JSON.stringify(arr)
+            }
+            const apiKey = 'd2e7790ef6a84f91a5455407241311'
+            const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${data.address.country}`;
+            fetch(url)
+              .then(response => response.json())
+              .then(data => {
+                console.log('===>', data.forecast.forecastday[0].hour);
+                for (let elm of data.forecast.forecastday[0].hour) {
+                  this.hour.push({
+                    time: elm.time,
+                    temp_c: elm.temp_c,
+                    icon: 'https:' + elm.condition?.icon,
+                    text: elm.condition?.text
 
-          //         })
-          //       }
+                  })
+                }
 
-          //       this.obj = {
-          //         name: data.location.name,
-          //         country: data.location.country,
-          //         temp: data.current.temp_c,
-          //         icon: 'https:' + data.current.condition.icon,
-          //         text: data.current.condition.text
-          //       }
-          //     })
-          //     .catch(error => {
-          //       console.error('Error fetching weather data:', error);
-          //     });
-          // } catch (error) {
-          //   console.error("Reverse Geocoding Failed", error);
-          // }
+                this.obj = {
+                  name: data.location.name,
+                  country: data.location.country,
+                  temp: data.current.temp_c,
+                  icon: 'https:' + data.current.condition.icon,
+                  text: data.current.condition.text
+                }
+              })
+              .catch(error => {
+                console.error('Error fetching weather data:', error);
+              });
+          } catch (error) {
+            console.error("Reverse Geocoding Failed", error);
+          }
         }
       )
     } else {
       this.error = "Geolocation is not supported by this browser.";
     }
-
-    // fetch('https://api.ipbase.com/v1/json/')
-    //   // fetch('https://ipapi.co/json/')
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     const x = this.locations.some(elm => elm.toLowerCase() == data.city.toLowerCase())
-    //     if (!x) {
-    //       // console.log(data.city);
-    //       this.locations.push(data.city);
-    //       localStorage.locations = JSON.stringify(this.locations)
-    //     }
-    //     const apiKey = 'd2e7790ef6a84f91a5455407241311'
-    //     const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${'Yerevan'}`;
-    //     fetch(url)
-    //       .then(response => response.json())
-    //       .then(data => {
-    //         console.log('===>', data.forecast.forecastday[0].hour);
-    //         for (let elm of data.forecast.forecastday[0].hour) {
-    //           this.hour.push({
-    //             time: elm.time,
-    //             temp_c: elm.temp_c,
-    //             icon: 'https:' + elm.condition?.icon,
-    //             text: elm.condition?.text
-
-    //           })
-    //         }
-
-    //         this.obj = {
-    //           name: data.location.name,
-    //           country: data.location.country,
-    //           temp: data.current.temp_c,
-    //           icon: 'https:' + data.current.condition.icon,
-    //           text: data.current.condition.text
-    //         }
-    //       })
-    //       .catch(error => {
-    //         console.error('Error fetching weather data:', error);
-    //       });
-    //   })
-    //   .catch(error => {
-    //     console.error('Error fetching location data:', error);
-    //   });
   }
 });
 </script>
@@ -576,7 +284,10 @@ export default defineComponent({
   font-family: font-Regular;
 
 }
+img{
+  cursor: context-menu;
 
+}
 .homepage {
   display: flex;
   justify-content: center;
