@@ -200,7 +200,7 @@ export default defineComponent({
       console.log('Component is about to be unmounted');
     }
   },
-  mounted() {
+  async mounted() {
     if (typeof localStorage !== 'undefined') {
       if (localStorage.locations === undefined) {
         this.text = "..."
@@ -211,19 +211,20 @@ export default defineComponent({
       this.text = "..."
     }
 
-    if (navigator.geolocation) {
-      console.log(navigator);
-      navigator.geolocation.getCurrentPosition(
-        async (pos) => {
-          console.log('==>', pos);
+    // if (navigator.geolocation) {
+    //   console.log(navigator);
+    //   navigator.geolocation.getCurrentPosition(
+    //     async (pos) => {
+          // console.log('==>', pos);
           this.errBool = false
-          const { latitude, longitude } = pos.coords
+          // const { latitude, longitude } = pos.coords
+          const [ latitude, longitude ] = [40.171293478503706, 44.51558998923964]
           try {
             const response = await fetch(
               `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
             );
             const data = await response.json();
-            console.log(data);
+            console.log('===>',data);
             console.log(data.address.country);
             let arr = localStorage.locations ? JSON.parse(localStorage.locations) : []
             let x = arr.includes(data.address.country)
@@ -261,14 +262,14 @@ export default defineComponent({
           } catch (error) {
             console.error("Reverse Geocoding Failed", error);
           }
-        }
-      )
-      if(this.errBool){
-        this.error = "Geolocation is not supported by this browser."
-      }
-    } else {
-      this.error = "Geolocation is not supported by this browser.";
-    }
+    //     }
+    //   )
+    //   if(this.errBool){
+    //     this.error = "Geolocation is not supported by this browser."
+    //   }
+    // } else {
+    //   this.error = "Geolocation is not supported by this browser.";
+    // }
   }
 });
 </script>

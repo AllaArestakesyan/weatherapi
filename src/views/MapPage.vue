@@ -102,6 +102,7 @@ export default defineComponent({
             }
         },
         async ondblclick(e) {
+            console.log(e.latlng);
             const { lat, lng } = e.latlng;
             try {
                 const response = await fetch(
